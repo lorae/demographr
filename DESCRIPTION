@@ -1,4 +1,4 @@
-Package: dataduck
+Package: demographr
 Title: Tools for Data Bucketing, Aggregation, and Validation Optimized for Databases
 Version: 0.0.0.9000
 Authors@R: 

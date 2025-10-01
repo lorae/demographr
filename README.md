@@ -1,7 +1,13 @@
-# dataduck
-An R package providing tools for data bucketing with lookup tables, aggregation, and validation, optimized for performance with databases like DuckDB.
+# 🌎 demographR
+An R package providing tools for demographers: data bucketing with lookup tables, aggregation, and validation, optimized for performance with databases like DuckDB.
 
-# Unit Testing
+# 📎 Quick Start
+
+```bash
+git clone https://github.com/lorae/demographr demographr
+```
+
+# 📋 Unit Testing
 
 Tests are located in the `tests/testthat` folder. To run all tests:
 ```r
@@ -9,7 +15,7 @@ library("devtools")
 devtools::test()
 ```
 
-# Contribution Guidelines
+# 🛠️ Contribution Guidelines
 
 ## Variable naming conventions
 **1. Data Variables**: In this R package, variables often refer to data that is either:
@@ -64,3 +70,6 @@ calculate_group_average(
   value_col = "Petal.Width"
 )
 ```
+
+# 📜 License
+MIT License (see LICENSE file).
