@@ -7,6 +7,7 @@
 library(readr)
 library(igraph)
 library(tibble)
+library(dplyr)
 
 test_hh <- read_csv("tests/test-data/household-fixtures/single_mom_3_kids.csv")
 
