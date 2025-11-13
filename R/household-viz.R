@@ -10,85 +10,85 @@ library(tibble)
 
 test_hh <- read_csv("tests/test-data/household-fixtures/single_mom_3_kids.csv")
 
-hh <- tibble(
+# ----- Step 1: Define some example households ----- #
+hh1 <- tibble(
   id         = c(1, 2, 3),
   age        = c(30, 7, 9),
   sex        = c(2, 1, 1),
   mother_id  = c(NA, 1, 1),
   father_id  = c(NA, NA, NA),
   spouse_id  = c(NA, NA, NA),
-  relate     = c("HOH", "Child", "Child")
+  is_hoh     = c(1, 0, 0)
 )
 
-hh
+hh1
 
-
-library(igraph)
-
-# ----- PEOPLE -----
-# Woman is HOH (sex = 2), Man is spouse (sex = 1)
-hh <- tibble::tibble(
-  id         = c(1, 2, 3, 4, 5),
-  age        = c(35, 37, 10, 7, 5),
-  sex        = c(2, 1, 1, 2, 1),     # kids can be anything
-  mother_id  = c(NA, NA, 1, 1, 1),   # woman is mother of all 3 kids
-  father_id  = c(NA, NA, 2, 2, 2),   # man is father of all 3 kids
-  spouse_id  = c(2, 1, NA, NA, NA),
-  relate     = c("HOH", "Spouse", "Child", "Child", "Child")
+hh2 <- tibble(
+  id         = c(1, 2, 3, 4, 5, 6, 7),
+  age        = c(65, 15, 34, 1, 13, 17, 41),
+  sex        = c(2, 2, 2, 1, 1, 2, 1),
+  mother_id  = c(NA, 1, 1, 3, 3, 3, NA),
+  father_id  = c(NA, NA, NA, 7, 7, 7, NA),
+  spouse_id  = c(NA, NA, 7, NA, NA, NA, 3),
+  is_hoh = c(1, 0, 0, 0, 0, 0, 0)
 )
 
-# ----- EDGES (parent → child + spouse) -----
-edges <- tibble::tibble(
-  from = c(1, 2, 1, 2, 1, 2, 1, 2),   # parents
-  to   = c(2, 1, 3, 3, 4, 4, 5, 5),   # spouse + kids
-  type = c("spouse", "spouse",
-           "parent", "parent",
-           "parent", "parent",
-           "parent", "parent")
-)
+hh2
 
-# Remove duplicate spouse edges (1→2 and 2→1)
-edges <- edges |> dplyr::distinct()
 
-# ----- Build igraph -----
-g <- igraph::graph_from_data_frame(
-  edges,
-  directed = TRUE,
-  vertices = hh |> dplyr::rename(name = id)
-)
+household_to_graph <- function(hh) {
+  edges <- list()
+  
+  # Parent-child edges
+  for (i in seq_len(nrow(hh))) {
+    if (!is.na(hh$mother_id[i])) {
+      edges[[length(edges) + 1]] <- c(hh$mother_id[i], hh$id[i])
+    }
+    if (!is.na(hh$father_id[i])) {
+      edges[[length(edges) + 1]] <- c(hh$father_id[i], hh$id[i])
+    }
+  }
+  
+  # Spouse edges
+  for (i in seq_len(nrow(hh))) {
+    if (!is.na(hh$spouse_id[i]) && hh$id[i] < hh$spouse_id[i]) {
+      edges[[length(edges) + 1]] <- c(hh$id[i], hh$spouse_id[i])
+    }
+  }
+  
+  # Convert to matrix or data frame
+  if (length(edges) == 0) {
+    # No edges - create empty graph with all people as isolated nodes
+    g <- igraph::make_empty_graph(n = nrow(hh), directed = FALSE)
+    V(g)$name <- as.character(hh$id)
+  } else {
+    edge_df <- data.frame(
+      from = sapply(edges, `[`, 1),
+      to = sapply(edges, `[`, 2)
+    )
+    
+    # Build graph with vertices data frame to ensure all people are included
+    g <- igraph::graph_from_data_frame(
+      d = edge_df,
+      directed = FALSE,
+      vertices = data.frame(name = hh$id)  # Ensure all people are vertices
+    )
+  }
+  
+  # Add vertex attributes
+  vertex_ids <- as.numeric(V(g)$name)
+  V(g)$age <- hh$age[match(vertex_ids, hh$id)]
+  V(g)$sex <- hh$sex[match(vertex_ids, hh$id)]
+  V(g)$is_hoh <- hh$is_hoh[match(vertex_ids, hh$id)]
+  
+  g
+}
 
-# ----- Colors -----
-sex_col <- ifelse(V(g)$sex == 2, "tomato", "steelblue")
+g <- household_to_graph(hh1)
+g
+components(g)$no  # Should return 1
 
-# Thick outline on HOH
-vertex_frame <- ifelse(V(g)$relate == "HOH", "black", "grey20")
-vertex_lwd   <- ifelse(V(g)$relate == "HOH", 4, 1)
 
-# ----- Manual layout -----
-# Woman & man side-by-side at top
-# Three kids below
-layout_mat <- matrix(
-  c( -1,  1,    # woman HOH
-     1,  1,    # man
-     -1, -1,    # child 1
-     0, -1,    # child 2
-     1, -1 ),  # child 3
-  ncol = 2,
-  byrow = TRUE
-)
-
-# ----- Plot -----
-plot(
-  g,
-  layout = layout_mat,
-  vertex.color = sex_col,
-  vertex.label = V(g)$age,
-  vertex.size = 35,
-  vertex.frame.color = vertex_frame,
-  vertex.label.color = "white",
-  vertex.label.cex = 1.3,
-  vertex.frame.width = vertex_lwd,
-  edge.arrow.size = 0.7,
-  edge.color = ifelse(E(g)$type == "spouse", "darkred", "grey40"),
-  edge.lty   = ifelse(E(g)$type == "spouse", 1, 1)
-)
+g <- household_to_graph(hh2)
+g
+components(g)$no  # Should return 1
