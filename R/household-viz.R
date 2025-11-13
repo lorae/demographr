@@ -37,52 +37,46 @@ hh2
 
 
 household_to_graph <- function(hh) {
-  edges <- list()
   
-  # Parent-child edges
-  for (i in seq_len(nrow(hh))) {
-    if (!is.na(hh$mother_id[i])) {
-      edges[[length(edges) + 1]] <- c(hh$mother_id[i], hh$id[i])
-    }
-    if (!is.na(hh$father_id[i])) {
-      edges[[length(edges) + 1]] <- c(hh$father_id[i], hh$id[i])
-    }
-  }
+  # ----- Parent–child edges -----
+  mother_edges <- hh |>
+    filter(!is.na(mother_id)) |>
+    transmute(from = mother_id, to = id)
   
-  # Spouse edges
-  for (i in seq_len(nrow(hh))) {
-    if (!is.na(hh$spouse_id[i]) && hh$id[i] < hh$spouse_id[i]) {
-      edges[[length(edges) + 1]] <- c(hh$id[i], hh$spouse_id[i])
-    }
-  }
+  father_edges <- hh |>
+    filter(!is.na(father_id)) |>
+    transmute(from = father_id, to = id)
   
-  # Convert to matrix or data frame
-  if (length(edges) == 0) {
-    # No edges - create empty graph with all people as isolated nodes
+  # ----- Spouse edges -----
+  spouse_edges <- hh |>
+    filter(!is.na(spouse_id), id < spouse_id) |>
+    transmute(from = id, to = spouse_id)
+  
+  # ----- Combine all edges -----
+  edge_df <- bind_rows(mother_edges, father_edges, spouse_edges)
+  
+  # ----- Build graph -----
+  if (nrow(edge_df) == 0) {
     g <- igraph::make_empty_graph(n = nrow(hh), directed = FALSE)
     V(g)$name <- as.character(hh$id)
   } else {
-    edge_df <- data.frame(
-      from = sapply(edges, `[`, 1),
-      to = sapply(edges, `[`, 2)
-    )
-    
-    # Build graph with vertices data frame to ensure all people are included
     g <- igraph::graph_from_data_frame(
       d = edge_df,
       directed = FALSE,
-      vertices = data.frame(name = hh$id)  # Ensure all people are vertices
+      vertices = data.frame(name = hh$id)
     )
   }
   
-  # Add vertex attributes
+  # ----- Vertex attributes -----
   vertex_ids <- as.numeric(V(g)$name)
-  V(g)$age <- hh$age[match(vertex_ids, hh$id)]
-  V(g)$sex <- hh$sex[match(vertex_ids, hh$id)]
+  
+  V(g)$age    <- hh$age[match(vertex_ids, hh$id)]
+  V(g)$sex    <- hh$sex[match(vertex_ids, hh$id)]
   V(g)$is_hoh <- hh$is_hoh[match(vertex_ids, hh$id)]
   
   g
 }
+
 
 g <- household_to_graph(hh1)
 g
