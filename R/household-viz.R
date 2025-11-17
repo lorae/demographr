@@ -41,7 +41,7 @@ hh2
 #    1   2
 # 1  0   1
 # 2  0   0
-mother_adjacency <- function(hh_tibble) {
+parent_adjacency <- function(hh_tibble, parent_col, max_age = Inf) {
   # Count number of household members
   m <- nrow(hh_tibble) 
   
@@ -49,33 +49,24 @@ mother_adjacency <- function(hh_tibble) {
   mat <- matrix(0, nrow = m, ncol = m) 
   
   # Directed (mother -> child) edges
-  mother_edges <- hh_tibble |>
-    filter(!is.na(mother_id), mother_id != 0) |>
-    select(mother_id, id)
+  # Robust to both NA and 0 entries for non-relationships
+  parent_edges <- hh_tibble |>
+    filter(
+      !is.na(.data[[parent_col]]), # NA
+      .data[[parent_col]] != 0, # 0
+      age <= max_age # Inf by default
+    ) |>
+    select(parent_id = !!sym(parent_col), id)
   
-  # Add the mother-child edges
-  mat[cbind(mother_edges$mother_id, mother_edges$id)] <- 1
+  # Add the parent edges
+  mat[cbind(parent_edges$parent_id, parent_edges$id)] <- 1
   
   mat
 }
 
-father_adjacency <- function(hh_tibble) {
-  # Count number of household members
-  m <- nrow(hh_tibble) 
-  
-  # Initialize an adjacency matrix without edges
-  mat <- matrix(0, nrow = m, ncol = m) 
-
-  # Directed (father -> child) edges
-  father_edges <- hh_tibble |>
-    filter(!is.na(father_id), father_id != 0) |>
-    select(father_id, id)
-  
-  # Add the father-child edges
-  mat[cbind(father_edges$father_id, father_edges$id)] <- 1
-  
-  mat
-}
+parent_adjacency(hh1, parent_col = "mother_id")
+parent_adjacency(hh2, parent_col = "mother_id")
+parent_adjacency(hh2, parent_col = "mother_id", max_age = 22)
 
 # Function which sums adjacency matrices
 sum_adjacency_matrices <- function(...) {
