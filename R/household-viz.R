@@ -36,11 +36,25 @@ hh2 <- tibble(
 
 hh2
 
+# Note: the adjacency matrix in this function points from row -> col
+# e.g. 
+#    1   2
+# 1  0   1
+# 2  0   0
+# This matrix has one directed edge, pointing from person 1 to person 2
 household_to_adjacency <- function(hh_tibble) {
-  m <- nrow(hh_tibble) # number of household members
+  # Count number of household members
+  m <- nrow(hh_tibble) 
   
-  m
+  # Initialize an adjacency matrix without edges
+  mat <- matrix(0, nrow = m, ncol = m) 
+  
+  # First do the directed (mother -> child) edges
+  mat
 }
+
+household_to_adjacency(hh1)
+household_to_adjacency(hh2)
 
 household_to_graph <- function(hh) {
   
