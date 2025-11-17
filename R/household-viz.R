@@ -36,6 +36,11 @@ hh2 <- tibble(
 
 hh2
 
+household_to_adjacency <- function(hh_tibble) {
+  m <- nrow(hh_tibble) # number of household members
+  
+  m
+}
 
 household_to_graph <- function(hh) {
   
