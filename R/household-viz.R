@@ -41,8 +41,7 @@ hh2
 #    1   2
 # 1  0   1
 # 2  0   0
-# This matrix has one directed edge, pointing from person 1 to person 2
-household_to_adjacency <- function(hh_tibble) {
+mother_adjacency <- function(hh_tibble) {
   # Count number of household members
   m <- nrow(hh_tibble) 
   
@@ -54,20 +53,48 @@ household_to_adjacency <- function(hh_tibble) {
     filter(!is.na(mother_id), mother_id != 0) |>
     select(mother_id, id)
   
+  # Add the mother-child edges
+  mat[cbind(mother_edges$mother_id, mother_edges$id)] <- 1
+  
+  mat
+}
+
+father_adjacency <- function(hh_tibble) {
+  # Count number of household members
+  m <- nrow(hh_tibble) 
+  
+  # Initialize an adjacency matrix without edges
+  mat <- matrix(0, nrow = m, ncol = m) 
+
   # Directed (father -> child) edges
   father_edges <- hh_tibble |>
     filter(!is.na(father_id), father_id != 0) |>
     select(father_id, id)
   
-  # Add the mother-child, father-child, edges to the matrix
-  mat[cbind(mother_edges$mother_id, mother_edges$id)] <- 1
+  # Add the father-child edges
   mat[cbind(father_edges$father_id, father_edges$id)] <- 1
   
   mat
 }
 
-household_to_adjacency(hh1)
-household_to_adjacency(hh2)
+# Function which sums adjacency matrices
+sum_adjacency_matrices <- function(...) {
+  mats <- list(...)
+  Reduce(`+`, mats)
+}
+
+sum_adjacency_matrices(
+  mother_adjacency(hh1),
+  father_adjacency(hh1)
+)
+
+sum_adjacency_matrices(
+  mother_adjacency(hh2),
+  father_adjacency(hh2)
+)
+
+mother_adjacency(hh1)
+father_adjacency(hh2)
 
 household_to_graph <- function(hh) {
   
