@@ -49,13 +49,19 @@ household_to_adjacency <- function(hh_tibble) {
   # Initialize an adjacency matrix without edges
   mat <- matrix(0, nrow = m, ncol = m) 
   
-  # First do the directed (mother -> child) edges
+  # Directed (mother -> child) edges
   mother_edges <- hh_tibble |>
     filter(!is.na(mother_id), mother_id != 0) |>
     select(mother_id, id)
   
-  # Add the mother-child edges to the matrix
+  # Directed (father -> child) edges
+  father_edges <- hh_tibble |>
+    filter(!is.na(father_id), father_id != 0) |>
+    select(father_id, id)
+  
+  # Add the mother-child, father-child, edges to the matrix
   mat[cbind(mother_edges$mother_id, mother_edges$id)] <- 1
+  mat[cbind(father_edges$father_id, father_edges$id)] <- 1
   
   mat
 }
