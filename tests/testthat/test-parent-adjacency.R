@@ -74,3 +74,47 @@ test_that("parent_adjacency returns all zeros when father_id has no valid links"
   expect_equal(output, expected)
 })
 
+test_that("parent_adjacency builds correct mother-child edges for hh_grandfamily", {
+  
+  expected <- matrix(
+    c(
+      # 1 2 3 4 5 6 7
+      0,1,1,0,0,0,0,   # id 1 → 2,3
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,1,1,1,0,   # id 3 → 4,5,6
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,0,0,0,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_grandfamily, parent_col = "mother_id")
+  
+  expect_equal(output, expected)
+})
+
+test_that("parent_adjacency builds correct father-child edges for hh_grandfamily", {
+  
+  expected <- matrix(
+    c(
+      # 1 2 3 4 5 6 7
+      0,0,0,0,0,0,0,   # id 1
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,0,0,0,0,   # id 3
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,1,1,1,0    # id 7 → 4,5,6
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_grandfamily, parent_col = "father_id")
+  
+  expect_equal(output, expected)
+})
+
