@@ -118,3 +118,52 @@ test_that("parent_adjacency builds correct father-child edges for hh_grandfamily
   expect_equal(output, expected)
 })
 
+test_that("parent_adjacency handles mixed NA and 0 mother_id entries correctly", {
+  
+  hh_mixed <- hh_grandfamily |> 
+    mutate(mother_id = c(0, 1, 1, 3, 3, 3, NA))
+  
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,1,1,0,0,0,0,   # id 1
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,1,1,1,0,   # id 3
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,0,0,0,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_mixed, parent_col = "mother_id")
+  
+  expect_equal(output, expected)
+})
+
+test_that("parent_adjacency treats 0 the same as NA for missing mother_id", {
+  
+  hh_zeroed <- hh_grandfamily |> 
+    mutate(mother_id = c(0, 1, 1, 3, 3, 3, 0))
+  
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,1,1,0,0,0,0,   # id 1
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,1,1,1,0,   # id 3
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,0,0,0,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_zeroed, parent_col = "mother_id")
+  
+  expect_equal(output, expected)
+})
