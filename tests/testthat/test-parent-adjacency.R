@@ -167,3 +167,30 @@ test_that("parent_adjacency treats 0 the same as NA for missing mother_id", {
   
   expect_equal(output, expected)
 })
+
+test_that("parent_adjacency respects max_age = 22 in hh_grandfamily", {
+  
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,1,0,0,0,0,0,   # id 1 → child 2 only (child 3 is age 34 > 22)
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,1,1,1,0,   # id 3 → children 4,5,6 (all ≤ 22)
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,0,0,0,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(
+    hh_grandfamily,
+    parent_col = "mother_id",
+    max_age = 22
+  )
+  
+  expect_equal(output, expected)
+})
+
