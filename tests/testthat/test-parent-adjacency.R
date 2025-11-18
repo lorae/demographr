@@ -194,3 +194,41 @@ test_that("parent_adjacency respects max_age = 22 in hh_grandfamily", {
   expect_equal(output, expected)
 })
 
+test_that("parent_adjacency is invariant to row order in hh_grandfamily", {
+  
+  # Scramble the row order
+  set.seed(123)
+  hh_scrambled <- hh_grandfamily |> slice(sample(n()))
+  
+  # Print both for visual confirmation
+  print("Original hh_grandfamily:")
+  print(hh_grandfamily)
+  
+  print("Scrambled hh_grandfamily:")
+  print(hh_scrambled)
+  
+  # Ensure the scrambled version is different from the original
+  expect_false(identical(hh_scrambled, hh_grandfamily))
+  
+  # Expected adjacency from canonical ordering
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,1,1,0,0,0,0,   # id 1
+      0,0,0,0,0,0,0,   # id 2
+      0,0,0,1,1,1,0,   # id 3
+      0,0,0,0,0,0,0,   # id 4
+      0,0,0,0,0,0,0,   # id 5
+      0,0,0,0,0,0,0,   # id 6
+      0,0,0,0,0,0,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_scrambled, parent_col = "mother_id")
+  
+  expect_equal(output, expected)
+})
+
+
