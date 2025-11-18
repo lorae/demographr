@@ -50,17 +50,15 @@ sum_adjacency_matrices <- function(...) {
 }
 
 sum_adjacency_matrices(
-  mother_adjacency(hh1),
-  father_adjacency(hh1)
+  parent_adjacency(hh1, parent_col = "mother_id"),
+  parent_adjacency(hh1, parent_col = "father_id")
 )
 
 sum_adjacency_matrices(
-  mother_adjacency(hh2),
-  father_adjacency(hh2)
+  parent_adjacency(hh2, parent_col = "mother_id"),
+  parent_adjacency(hh2, parent_col = "father_id")
 )
 
-mother_adjacency(hh1)
-father_adjacency(hh2)
 
 household_to_graph <- function(hh) {
   
