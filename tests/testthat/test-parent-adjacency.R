@@ -55,3 +55,22 @@ test_that("parent_adjacency builds mother-child edges correctly in household wit
   # Test
   expect_equal(output, expected)
 })
+
+test_that("parent_adjacency returns all zeros when father_id has no valid links", {
+  
+  # Expected: 3×3 matrix of zeros
+  expected <- matrix(
+    c(
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0
+    ),
+    nrow = 3,
+    byrow = TRUE
+  )
+  
+  output <- parent_adjacency(hh_single_mom, parent_col = "father_id")
+  
+  expect_equal(output, expected)
+})
+
