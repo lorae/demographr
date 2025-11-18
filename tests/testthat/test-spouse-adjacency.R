@@ -129,3 +129,92 @@ test_that("spouse_adjacency handles asymmetric spouse listings correctly", {
   # Test
   expect_equal(output, expected)
 })
+
+test_that("spouse_adjacency treats 0 the same as NA for missing spouse_id in hh_grandfamily", {
+  
+  input <- hh_grandfamily |>
+    mutate(spouse_id = c(0, 0, 7, 0, 0, 0, 3))  # replace NA with 0
+  
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,0,0,0,0,0,0,   # 1
+      0,0,0,0,0,0,0,   # 2
+      0,0,0,0,0,0,1,   # 3 → 7
+      0,0,0,0,0,0,0,   # 4
+      0,0,0,0,0,0,0,   # 5
+      0,0,0,0,0,0,0,   # 6
+      0,0,1,0,0,0,0    # 7 → 3
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- spouse_adjacency(input)
+  
+  expect_equal(output, expected)
+})
+
+test_that("spouse_adjacency handles mixed NA and 0 spouse_id entries in hh_grandfamily", {
+  
+  input <- hh_grandfamily |>
+    mutate(spouse_id = c(0, NA, 7, 0, NA, 0, 3))  # mix of NA and 0
+  
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,0,0,0,0,0,0,   # 1
+      0,0,0,0,0,0,0,   # 2
+      0,0,0,0,0,0,1,   # 3 → 7
+      0,0,0,0,0,0,0,   # 4
+      0,0,0,0,0,0,0,   # 5
+      0,0,0,0,0,0,0,   # 6
+      0,0,1,0,0,0,0    # 7 → 3
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- spouse_adjacency(input)
+  
+  expect_equal(output, expected)
+})
+
+test_that("spouse_adjacency is invariant to row order in hh_grandfamily", {
+  
+  # Scramble the row order
+  set.seed(123)
+  hh_scrambled <- hh_grandfamily |> slice(sample(n()))
+  
+  # Print both for visual confirmation
+  print("Original hh_grandfamily:")
+  print(hh_grandfamily)
+  
+  print("Scrambled hh_grandfamily:")
+  print(hh_scrambled)
+  
+  # Ensure the scrambled version is different from the original
+  expect_false(identical(hh_scrambled, hh_grandfamily))
+  
+  # Expected adjacency for spouse edges (3 ↔ 7)
+  expected <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+      0,0,0,0,0,0,0,   # 1
+      0,0,0,0,0,0,0,   # 2
+      0,0,0,0,0,0,1,   # 3 → 7
+      0,0,0,0,0,0,0,   # 4
+      0,0,0,0,0,0,0,   # 5
+      0,0,0,0,0,0,0,   # 6
+      0,0,1,0,0,0,0    # 7 → 3
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  output <- spouse_adjacency(hh_scrambled)
+  
+  expect_equal(output, expected)
+})
+
+
