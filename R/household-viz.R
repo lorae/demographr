@@ -42,10 +42,8 @@ hh2
 # 1  0   1
 # 2  0   0
 parent_adjacency <- function(hh_tibble, parent_col, max_age = Inf) {
-  # Count number of household members
-  m <- nrow(hh_tibble) 
-  
   # Initialize an adjacency matrix without edges
+  m <- nrow(hh_tibble) 
   mat <- matrix(0, nrow = m, ncol = m) 
   
   # Directed (mother -> child) edges
@@ -60,6 +58,28 @@ parent_adjacency <- function(hh_tibble, parent_col, max_age = Inf) {
   
   # Add the parent edges
   mat[cbind(parent_edges$parent_id, parent_edges$id)] <- 1
+  
+  mat
+}
+
+spouse_adjacency <- function(hh_tibble, spouse_col = "spouse_id") {
+  # Initialize an adjacency matrix without edges
+  m <- nrow(hh_tibble)
+  mat <- matrix(0, m, m)
+  
+  spouse_edges <- hh_tibble |>
+    filter(
+      !is.na(.data[[spouse_col]]),
+      .data[[spouse_col]] != 0
+    ) |>
+    select(id, spouse_id = all_of(spouse_col))
+  
+  if (nrow(spouse_edges) > 0) {
+    # id → spouse
+    mat[cbind(spouse_edges$id, spouse_edges$spouse_id)] <- 1
+    # spouse → id (bidirectional)
+    mat[cbind(spouse_edges$spouse_id, spouse_edges$id)] <- 1
+  }
   
   mat
 }
