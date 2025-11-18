@@ -200,7 +200,7 @@ test_that("parent_adjacency is invariant to row order in hh_grandfamily", {
   set.seed(123)
   hh_scrambled <- hh_grandfamily |> slice(sample(n()))
   
-  # Print both for visual confirmation
+  # Print both for visual confirmation that data have been scrambled
   print("Original hh_grandfamily:")
   print(hh_grandfamily)
   
