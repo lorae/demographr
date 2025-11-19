@@ -59,6 +59,6 @@ spouse_adjacency <- function(hh_tibble, spouse_col = "spouse_id") {
 household_adjacency <- function(hh_tibble, max_age = Inf) {
   mat <- 
     parent_adjacency(hh_tibble, parent_col = "mother_id", max_age = max_age) +
-    parent_adjacency(hh_tibble, parent_col = "spouse_id", max_age = max_age) +
+    parent_adjacency(hh_tibble, parent_col = "father_id", max_age = max_age) +
     spouse_adjacency(hh_tibble)
 }
