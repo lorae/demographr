@@ -92,7 +92,31 @@ test_that("household_adjacency builds edges correctly in 3 cases", {
   expect_equal(output_single_mom, expected_single_mom)
   expect_equal(output_grandfamily, expected_grandfamily)
   expect_equal(output_four, expected_four)
-})test_that("household_adjacency warns on non-zero diagonal", {
+})
+
+test_that("household_adjacency respects max_age", {
+  expected_capped <- matrix(
+    c(
+      #1 2 3 4 5 6 7
+       0,1,0,0,0,0,0,   # id 1 
+       0,0,0,0,0,0,0,   # id 2
+       0,0,0,1,1,1,1,   # id 3 
+       0,0,0,0,0,0,0,   # id 4
+       0,0,0,0,0,0,0,   # id 5
+       0,0,0,0,0,0,0,   # id 6
+       0,0,1,1,1,1,0    # id 7
+    ),
+    nrow = 7,
+    byrow = TRUE
+  )
+  
+  out <- household_adjacency(hh_grandfamily, max_age = 22)
+  
+  expect_equal(out, expected_capped)
+})
+
+
+test_that("household_adjacency warns on non-zero diagonal", {
   # Create fake hh where an impossible self-edge is forced
   hh <- tibble(
     id = c(1, 2),
