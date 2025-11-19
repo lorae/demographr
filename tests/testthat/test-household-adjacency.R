@@ -92,4 +92,35 @@ test_that("household_adjacency builds edges correctly in 3 cases", {
   expect_equal(output_single_mom, expected_single_mom)
   expect_equal(output_grandfamily, expected_grandfamily)
   expect_equal(output_four, expected_four)
+})test_that("household_adjacency warns on non-zero diagonal", {
+  # Create fake hh where an impossible self-edge is forced
+  hh <- tibble(
+    id = c(1, 2),
+    age = c(40, 10),
+    mother_id = c(1, 1),   # person 1 listed as mother of self
+    father_id = c(0, 0),
+    spouse_id = c(NA, NA)
+  )
+  
+  expect_warning(
+    household_adjacency(hh),
+    regexp = "non-zero diagonal"
+  )
+})
+
+test_that("household_adjacency warns on entries not 0 or 1", {
+  # Build a case where your lower-level functions double-count
+  # (simulate by manually adding a duplicate edge after generation)
+  hh <- tibble(
+    id = c(1, 2),
+    age = c(40, 10),
+    mother_id = c(NA, 1),
+    father_id = c(NA, 1),  # double parent -> will produce sum = 2
+    spouse_id = c(NA, NA)
+  )
+  
+  expect_warning(
+    household_adjacency(hh),
+    regexp = "values other than 0 or 1"
+  )
 })

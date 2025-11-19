@@ -61,4 +61,16 @@ household_adjacency <- function(hh_tibble, max_age = Inf) {
     parent_adjacency(hh_tibble, parent_col = "mother_id", max_age = max_age) +
     parent_adjacency(hh_tibble, parent_col = "father_id", max_age = max_age) +
     spouse_adjacency(hh_tibble)
+  
+  # Warn if household has self-edges
+  if (any(diag(mat) != 0)) {
+    warning("Adjacency matrix has at least one non-zero diagonal entry (an impossible self-edge of a parent-child or spouse relationship).")
+  }
+  
+  # 2. Warn if any entry is not 0 or 1
+  if (any(!(mat %in% c(0, 1)))) {
+    warning("Adjacency matrix contains values other than 0 or 1 (an implausible self-edge of multiple relationship types for same two individuals).")
+  }
+  
+  mat
 }
