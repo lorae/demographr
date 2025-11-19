@@ -55,7 +55,6 @@ spouse_adjacency <- function(hh_tibble, spouse_col = "spouse_id") {
 }
 
 # Create a generic household adjacency matrix by summing above matrices
-# TODO: unit test
 household_adjacency <- function(hh_tibble, max_age = Inf) {
   mat <- 
     parent_adjacency(hh_tibble, parent_col = "mother_id", max_age = max_age) +
@@ -73,4 +72,16 @@ household_adjacency <- function(hh_tibble, max_age = Inf) {
   }
   
   mat
+}
+
+# Count number of connected components in a household adjacency matrix
+count_components <- function(mat) {
+  # Convert directed adjacency to undirected
+  undirected <- (mat + t(mat)) > 0
+
+  # Build graph
+  g <- igraph::graph_from_adjacency_matrix(undirected, mode = "undirected")
+  
+  # Number of connected components
+  return(igraph::components(g))
 }
