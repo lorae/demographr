@@ -8,7 +8,7 @@
 set.seed(123)
 
 # ----- Step 1: Functions ----- #
-generate_household_heads <- function(mean_age, n = 100, sd_age = 30) {
+generate_household_head_ages <- function(mean_age, n = 100, sd_age = 30) {
   ages <- integer(0)
   
   while (length(ages) < n) {
@@ -34,20 +34,23 @@ stochastic_round <- function(x, min = 0, max = NULL) {
   y
 }
 
-generate_children_exact <- function(age, b0, b1, sd_e = 0) {
+linear_predict <- function(age, b0, b1, sd_e = 0) {
   e <- rnorm(1, mean = 0, sd = sd_e)
   b0 + b1 * age + e
 }
 
-generate_children_round <- function(age, b0, b1, sd_e = 0, min = 0, max = NULL) {
-  pred <- generate_children_exact(age = age, b0 = b0, b1 = b1, sd_e = sd_e)
+generate_children_exact <- function(age, b0 = 2.5, b1 = -0.04, sd_e = 0) {
+  linear_predict(age, b0, b1, sd_e)
+}
+generate_children_round <- function(age, b0 = 2.5, b1 = -0.04, sd_e = 0, min = 0, max = NULL) {
+  pred <- generate_children_exact(age, b0, b1, sd_e)
   stochastic_round(pred, min = min, max = max)
 }
 
 
 
-# ----- Step 2: Model calibration ----- #
 
+# ----- Step 2: Model calibration ----- #
 
 # Evaluate the children regression once at each integer age from 22 to 100
 # and plot the implied relationship (line graph).
@@ -67,7 +70,7 @@ plot(
 )
 
 # Evaluate the children regression once at each integer age from 22 to 100
-# and plot the implied relationship (line graph).
+# and plot the implied relationship once stochastic roudngin is applied.
 ages <- 22:100
 children_pred <- vapply(
   ages,
