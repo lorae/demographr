@@ -246,3 +246,68 @@ summary(hh_2019$hh_size)
 
 hist(hh_2000$hh_size, main = "Household size (2000)", xlab = "Household size")
 hist(hh_2019$hh_size, main = "Household size (2019)", xlab = "Household size")
+
+person_2000 <- expand_household_to_adults(hh_2000)
+person_2019 <- expand_household_to_adults(hh_2019)
+
+# ----- Step 4: Apply KOB ---- #
+
+hhsize_2000 <- person_2000$hh_size |> mean()
+hhsize_2019 <- person_2019$hh_size |> mean()
+
+hhsize_2019 - hhsize_2000
+
+# ----- Step 4a: Component regressions by year ----- #
+
+# Children regressions
+reg_children_2000 <- lm(n_children ~ age, data = person_2000)
+reg_children_2019 <- lm(n_children ~ age, data = person_2019)
+
+# Spouse regressions
+reg_spouse_2000 <- lm(n_spouses ~ age, data = person_2000)
+reg_spouse_2019 <- lm(n_spouses ~ age, data = person_2019)
+
+# Non-subfamily regressions
+reg_nonsf_2000 <- lm(n_nonsf ~ age, data = person_2000)
+reg_nonsf_2019 <- lm(n_nonsf ~ age, data = person_2019)
+
+
+# --- Results
+
+make_coef_table <- function(reg_2000, reg_2019,
+                            year_names = c("2000", "2019")) {
+  coefs_2000 <- coef(reg_2000)
+  coefs_2019 <- coef(reg_2019)
+  
+  coef_names <- union(names(coefs_2000), names(coefs_2019))
+  
+  out <- cbind(
+    `2000` = coefs_2000[coef_names],
+    `2019` = coefs_2019[coef_names]
+  )
+  
+  rownames(out) <- coef_names
+  out
+}
+
+# Children coefficients
+coef_children <- make_coef_table(
+  reg_children_2000,
+  reg_children_2019
+)
+
+# Spouse coefficients
+coef_spouse <- make_coef_table(
+  reg_spouse_2000,
+  reg_spouse_2019
+)
+
+# Non-subfamily coefficients
+coef_nonsf <- make_coef_table(
+  reg_nonsf_2000,
+  reg_nonsf_2019
+)
+
+coef_children
+coef_spouse
+coef_nonsf
