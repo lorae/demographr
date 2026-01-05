@@ -1,7 +1,7 @@
 # The purpose of this file is to provide examples of the results of Oaxaca-Blinder
 # decompositions of household size when
 # 1. Just immigrant status is involved
-# 2. just age is involed
+# 2. just age is involved
 # 3. Age and immigration status are involved.
 
 # ----- Step 0: Config ----- #
@@ -42,27 +42,81 @@ linear_predict <- function(age, b0, b1, sd_e = 0) {
 generate_children_exact <- function(age, b0 = 2.5, b1 = -0.04, sd_e = 0) {
   linear_predict(age, b0, b1, sd_e)
 }
-generate_children_round <- function(age, b0 = 2.5, b1 = -0.04, sd_e = 0, min = 0, max = NULL) {
-  pred <- generate_children_exact(age, b0, b1, sd_e)
+generate_children_round <- function(age, min = 0, max = NULL) {
+  pred <- generate_children_exact(age)
+  stochastic_round(pred, min = min, max = max)
+}
+
+generate_spouse_exact <- function(age, b0 = 1.22, b1 = -0.01, sd_e = 0) {
+  linear_predict(age, b0, b1, sd_e)
+}
+generate_spouse_round <- function(age, min = 0, max = 1) {
+  pred <- generate_spouse_exact(age)
+  stochastic_round(pred, min = min, max = max)
+}
+
+generate_nonsf_exact <- function(age, b0 = 1.8, b1 = -0.04, sd_e = 0) {
+  linear_predict(age, b0, b1, sd_e)
+}
+generate_nonsf_round <- function(age, min = 0, max = NULL) {
+  pred <- generate_nonsf_exact(age)
   stochastic_round(pred, min = min, max = max)
 }
 
 
+expand_household_to_adults <- function(df) {
+  rows <- vector("list", nrow(df))
+  
+  for (i in seq_len(nrow(df))) {
+    row <- df[i, ]
+    
+    out <- list()
+    
+    # 1. Household head
+    out[[1]] <- row
+    
+    # 2. Spouse(s): duplicate the household row
+    if (row$n_spouses > 0) {
+      for (s in seq_len(row$n_spouses)) {
+        out[[length(out) + 1]] <- row
+      }
+    }
+    
+    # 3. Non-subfamily adults
+    if (row$n_nonsf > 0) {
+      for (n in seq_len(row$n_nonsf)) {
+        nonsf_row <- row
+        nonsf_row$n_children <- 0
+        nonsf_row$n_spouses  <- 0
+        nonsf_row$n_nonsf    <- row$hh_size - 1
+        out[[length(out) + 1]] <- nonsf_row
+      }
+    }
+    
+    rows[[i]] <- do.call(rbind, out)
+  }
+  
+  do.call(rbind, rows)
+}
 
 
 # ----- Step 2: Model calibration ----- #
+# These are sanity checks of our synthetic parameters before generating full data.
 
+ages <- 22:100 # 22 = age of majority in our model
+
+# --- Children --- #
 # Evaluate the children regression once at each integer age from 22 to 100
-# and plot the implied relationship (line graph).
-ages <- 22:100
-children_pred <- vapply(
+# and plot the implied relationship. This is without stochastic rounding.
+
+children_pred_exact <- vapply(
   ages,
-  function(a) generate_children_exact(age = a, b0 = 2.5, b1 = -0.04, sd_e = 0),
+  function(a) generate_children_exact(age = a),
   numeric(1)
 )
 
 plot(
-  ages, children_pred,
+  ages, children_pred_exact,
   type = "l",
   xlab = "Age",
   ylab = "Predicted number of children (exact)",
@@ -70,26 +124,125 @@ plot(
 )
 
 # Evaluate the children regression once at each integer age from 22 to 100
-# and plot the implied relationship once stochastic roudngin is applied.
-ages <- 22:100
-children_pred <- vapply(
+# and plot the implied relationship once stochastic rounding is applied.
+children_pred_round <- vapply(
   ages,
-  function(a) generate_children_round(age = a, b0 = 2.5, b1 = -0.04, sd_e = 0),
+  function(a) generate_children_round(age = a),
   numeric(1)
 )
 
 plot(
-  ages, children_pred,
+  ages, children_pred_round,
   type = "l",
   xlab = "Age",
-  ylab = "Predicted number of children (exact)",
-  main = "Children prediction by age"
+  ylab = "Number of children (stochastic realization)",
+  main = "Children by age (one stochastic draw)"
+)
+
+# --- Spouses --- #
+spouse_pred_exact <- vapply(
+  ages,
+  function(a) generate_spouse_exact(age = a),
+  numeric(1)
+)
+
+plot(
+  ages, spouse_pred_exact,
+  type = "l",
+  xlab = "Age",
+  ylab = "Predicted number of spouses (exact)",
+  main = "Spouse prediction by age"
+)
+
+# Evaluate the spouse regression once at each integer age from 22 to 100
+# and plot one stochastic realization after rounding to {0, 1}.
+spouse_pred_round <- vapply(
+  ages,
+  function(a) generate_spouse_round(age = a),
+  numeric(1)
+)
+
+plot(
+  ages, spouse_pred_round,
+  type = "l",
+  xlab = "Age",
+  ylab = "Spouse indicator (stochastic realization)",
+  main = "Spouse by age (one stochastic draw)"
+)
+
+# --- Non-subfamily members --- #
+
+# Evaluate the non-subfamily regression once at each integer age from 22 to 100
+# and plot the implied relationship. This is without stochastic rounding.
+nonsf_pred_exact <- vapply(
+  ages,
+  function(a) generate_nonsf_exact(age = a),
+  numeric(1)
+)
+
+plot(
+  ages, nonsf_pred_exact,
+  type = "l",
+  xlab = "Age",
+  ylab = "Predicted number of non-subfamily members (exact)",
+  main = "Non-subfamily members by age"
+)
+
+# Evaluate the non-subfamily regression once at each integer age from 22 to 100
+# and plot one stochastic realization after rounding.
+nonsf_pred_round <- vapply(
+  ages,
+  function(a) generate_nonsf_round(age = a),
+  numeric(1)
+)
+
+plot(
+  ages, nonsf_pred_round,
+  type = "l",
+  xlab = "Age",
+  ylab = "Number of non-subfamily members (stochastic realization)",
+  main = "Non-subfamily members by age (one stochastic draw)"
 )
 
 
-# ----- Step 3: Create syntehtic data ----- #
+# ----- Step 3: Create synthetic data ----- #
+n_obs <- 1000
 # Generate synthetic "household head" ages for each year.
-hoh_ages_2000 <- generate_household_heads(mean_age = 25)
-hoh_ages_2019 <- generate_household_heads(mean_age = 45)
+hoh_ages_2000 <- generate_household_head_ages(mean_age = 25, n = n_obs)
+hoh_ages_2019 <- generate_household_head_ages(mean_age = 45, n = n_obs)
 hoh_ages_2000 |> hist()
 hoh_ages_2019 |> hist()
+
+# Now generate n_children, n_spouses, and n_nonsf for each person using the stochastic
+# rounded versions of the above function.
+# Generate household components for each household head (stochastic versions)
+
+generate_household_components <- function(ages) {
+  n <- length(ages)
+  
+  n_children <- vapply(ages, generate_children_round, numeric(1))
+  n_spouses  <- vapply(ages, generate_spouse_round,  numeric(1))
+  n_nonsf    <- vapply(ages, generate_nonsf_round,    numeric(1))
+  
+  data.frame(
+    age        = ages,
+    n_children = n_children,
+    n_spouses  = n_spouses,
+    n_nonsf    = n_nonsf
+  )
+}
+
+# Generate synthetic household data for each year
+hh_2000 <- generate_household_components(hoh_ages_2000)
+hh_2019 <- generate_household_components(hoh_ages_2019)
+
+# Define total household size:
+# 1 (household head) + spouses + children + non-subfamily members
+hh_2000$hh_size <- 1 + hh_2000$n_spouses + hh_2000$n_children + hh_2000$n_nonsf
+hh_2019$hh_size <- 1 + hh_2019$n_spouses + hh_2019$n_children + hh_2019$n_nonsf
+
+summary(hh_2000$hh_size)
+summary(hh_2019$hh_size)
+
+hist(hh_2000$hh_size, main = "Household size (2000)", xlab = "Household size")
+hist(hh_2019$hh_size, main = "Household size (2019)", xlab = "Household size")
