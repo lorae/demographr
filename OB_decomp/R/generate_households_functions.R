@@ -1,34 +1,42 @@
 # ============================================================
-# Synthetic household + subfamily data generator
+# Household + subfamily generator functions
 # ============================================================
 
-set.seed(123)
+# Assumes config.R has already been sourced:
+# - AGE_MIN, AGE_MAX
+# - DEFAULT_SD_AGE
+# - PARAMS list
 
 # ------------------------------------------------------------
 # 1. Core utility functions
 # ------------------------------------------------------------
 
-generate_household_head_ages <- function(mean_age, n = 1, sd_age = 30) {
+generate_household_head_ages <- function(mean_age, n = 1, sd_age = DEFAULT_SD_AGE) {
   ages <- integer(0)
+  
   while (length(ages) < n) {
     draw <- round(rnorm(n, mean = mean_age, sd = sd_age))
-    draw <- draw[draw >= 22 & draw <= 100]
+    draw <- draw[draw >= AGE_MIN & draw <= AGE_MAX]
     ages <- c(ages, draw)
   }
+  
   ages[seq_len(n)]
 }
 
 stochastic_round <- function(x, min = 0, max = NULL) {
   lower <- floor(x)
   frac  <- x - lower
+  
   y <- lower + rbinom(1, size = 1, prob = frac)
+  
   y <- max(min, y)
   if (!is.null(max)) y <- min(max, y)
+  
   y
 }
 
 linear_predict <- function(age, b0, b1, sd_e = 0) {
-  e <- rnorm(1, 0, sd_e)
+  e <- rnorm(1, mean = 0, sd = sd_e)
   b0 + b1 * age + e
 }
 
@@ -37,31 +45,34 @@ linear_predict <- function(age, b0, b1, sd_e = 0) {
 # ------------------------------------------------------------
 
 generate_children_round <- function(age, min = 0, max = NULL) {
-  pred <- linear_predict(age, b0 = 2.5, b1 = -0.04, sd_e = 1.0)
+  p <- PARAMS$children
+  pred <- linear_predict(age, p$b0, p$b1, p$sd_e)
   stochastic_round(pred, min, max)
 }
 
-generate_spouse_round <- function(age, min = 0, max = 1) {
-  pred <- linear_predict(age, b0 = 1.22, b1 = -0.01, sd_e = 0.4)
+generate_spouse_round <- function(age, min = 0, max = PARAMS$spouse$max) {
+  p <- PARAMS$spouse
+  pred <- linear_predict(age, p$b0, p$b1, p$sd_e)
   stochastic_round(pred, min, max)
 }
 
-# number of *additional* subfamilies
+# Number of *additional* subfamilies
 generate_nonsf_round <- function(age, min = 0, max = NULL) {
-  pred <- linear_predict(age, b0 = 1.8, b1 = -0.04, sd_e = 0.4)
+  p <- PARAMS$other_sf
+  pred <- linear_predict(age, p$b0, p$b1, p$sd_e)
   stochastic_round(pred, min, max)
 }
 
 # ------------------------------------------------------------
-# 3. Household generator (main logic)
+# 3. Household generator
 # ------------------------------------------------------------
 
 generate_households <- function(
     n_households = 1000,
-    mean_hoh_age = 45
+    mean_hoh_age = DEFAULT_MEAN_HOH_AGE
 ) {
   
-  all_households <- list()
+  all_households <- vector("list", n_households)
   household_id <- 1
   
   for (h in seq_len(n_households)) {
@@ -112,6 +123,7 @@ generate_households <- function(
   }
   
   df <- do.call(rbind, all_households)
+  
   # ---- Attach household totals ----
   hh_sizes <- aggregate(
     subfamily_size ~ household_id,
@@ -120,7 +132,6 @@ generate_households <- function(
   )
   names(hh_sizes)[2] <- "hh_size"
   
-  # ---- Attach number of subfamilies (including HOH) ----
   n_subfamilies <- aggregate(
     subfamily_id ~ household_id,
     df,
@@ -128,30 +139,8 @@ generate_households <- function(
   )
   names(n_subfamilies)[2] <- "n_subfamilies"
   
-  # merge both household-level summaries onto the subfamily rows
   out <- merge(df, hh_sizes, by = "household_id")
   out <- merge(out, n_subfamilies, by = "household_id")
+  
   out
 }
-
-# ------------------------------------------------------------
-# 4. Run the generator
-# ------------------------------------------------------------
-
-synthetic_households <- generate_households(
-  n_households = 10,
-  mean_hoh_age = 45
-)
-
-# ------------------------------------------------------------
-# 5. Quick sanity checks
-# ------------------------------------------------------------
-
-head(synthetic_households, 10)
-
-table(synthetic_households$household_id) |> summary()
-
-summary(synthetic_households$hh_size)
-
-# Example: inspect one household
-subset(synthetic_households, household_id == 1)
