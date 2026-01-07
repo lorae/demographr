@@ -206,7 +206,7 @@ plot(
 
 
 # ----- Step 3: Create synthetic data ----- #
-n_obs <- 1000
+n_obs <- 100000
 # Generate synthetic "household head" ages for each year.
 hoh_ages_2000 <- generate_household_head_ages(mean_age = 25, n = n_obs)
 hoh_ages_2019 <- generate_household_head_ages(mean_age = 45, n = n_obs)
@@ -254,6 +254,12 @@ person_2019 <- expand_household_to_adults(hh_2019)
 
 hhsize_2000 <- person_2000$hh_size |> mean()
 hhsize_2019 <- person_2019$hh_size |> mean()
+
+age_2000 <- person_2000$age |> mean()
+age_2019 <- person_2019$age |> mean()
+
+children_2000 <- person_2000$n_children |> mean()
+children_2019 <- person_2019$n_children |> mean()
 
 hhsize_2019 - hhsize_2000
 
@@ -308,6 +314,97 @@ coef_nonsf <- make_coef_table(
   reg_nonsf_2019
 )
 
+# Children
 coef_children
+i_children <- coef_children["(Intercept)", "2019"] - coef_children["(Intercept)", "2000"]
+e_children <- (age_2019 - age_2000)*coef_children["age", "2019"]
+c_children <- (coef_children["age", "2019"] - coef_children["age", "2000"])*age_2000
+
+i_children + c_children + e_children
+children_diff <- children_2019 - children_2000
+# it works!
+
+i_children / children_diff
+e_children / children_diff
+c_children / children_diff
+
+# --- Spouse decomposition --- #
 coef_spouse
-coef_nonsf
+
+spouse_2000 <- person_2000$n_spouses |> mean()
+spouse_2019 <- person_2019$n_spouses |> mean()
+
+i_spouse <- coef_spouse["(Intercept)", "2019"] -
+  coef_spouse["(Intercept)", "2000"]
+
+e_spouse <- (age_2019 - age_2000) *
+  coef_spouse["age", "2019"]
+
+c_spouse <- (coef_spouse["age", "2019"] -
+               coef_spouse["age", "2000"]) *
+  age_2000
+
+# Check decomposition identity
+i_spouse + c_spouse + e_spouse
+
+spouse_diff <- spouse_2019 - spouse_2000
+
+# Shares
+i_spouse / spouse_diff
+e_spouse / spouse_diff
+c_spouse / spouse_diff
+
+# --- Non-subfamily decomposition --- #
+
+nonsf_2000 <- person_2000$n_nonsf |> mean()
+nonsf_2019 <- person_2019$n_nonsf |> mean()
+
+i_nonsf <- coef_nonsf["(Intercept)", "2019"] -
+  coef_nonsf["(Intercept)", "2000"]
+
+e_nonsf <- (age_2019 - age_2000) *
+  coef_nonsf["age", "2019"]
+
+c_nonsf <- (coef_nonsf["age", "2019"] -
+              coef_nonsf["age", "2000"]) *
+  age_2000
+
+# Check decomposition identity
+i_nonsf + c_nonsf + e_nonsf
+
+nonsf_diff <- nonsf_2019 - nonsf_2000
+
+# Shares
+i_nonsf / nonsf_diff
+e_nonsf / nonsf_diff
+c_nonsf / nonsf_diff
+
+nonsf_diff + spouse_diff + children_diff
+# --- Non-subfamily decomposition --- #
+
+nonsf_2000 <- person_2000$n_nonsf |> mean()
+nonsf_2019 <- person_2019$n_nonsf |> mean()
+
+i_nonsf <- coef_nonsf["(Intercept)", "2019"] -
+           coef_nonsf["(Intercept)", "2000"]
+
+e_nonsf <- (age_2019 - age_2000) *
+           coef_nonsf["age", "2019"]
+
+c_nonsf <- (coef_nonsf["age", "2019"] -
+            coef_nonsf["age", "2000"]) *
+            age_2000
+
+# Check decomposition identity
+i_nonsf + c_nonsf + e_nonsf
+
+nonsf_diff <- nonsf_2019 - nonsf_2000
+
+# Shares
+i_nonsf / nonsf_diff
+e_nonsf / nonsf_diff
+c_nonsf / nonsf_diff
+
+# ---
+spouse_diff + children_diff + nonsf_diff
+hhsize_2019 - hhsize_2000
