@@ -18,6 +18,7 @@ expand_households_to_adults <- function(households_df) {
       "is_hoh_subfamily",
       "subfam_head_age",
       "n_partners",
+      "n_children",
       "subfamily_size",
       "hh_size",
       "n_subfamilies"
@@ -40,15 +41,27 @@ expand_households_to_adults <- function(households_df) {
       
       adults[[a]] <- data.frame(
         adult_id           = adult_counter,
+        
+        # identifiers
         household_id       = row$household_id,
         subfamily_id       = row$subfamily_id,
+        
+        # structure flags
         is_hoh_subfamily   = row$is_hoh_subfamily,
         is_subfamily_head  = (a == 1),
-        adult_age          = max(row$subfam_head_age, AGE_MIN),
-        subfam_head_age    = row$subfam_head_age,
-        subfamily_size     = row$subfamily_size,
-        hh_size            = row$hh_size,
-        n_subfamilies      = row$n_subfamilies
+        
+        # age
+        age                = max(row$subfam_head_age, AGE_MIN),
+        
+        # KOB-ready covariates
+        n_children          = row$n_children,
+        n_spouses           = row$n_partners,
+        n_nonsf             = row$hh_size - row$subfamily_size,
+        
+        # household structure
+        subfamily_size      = row$subfamily_size,
+        hh_size             = row$hh_size,
+        n_subfamilies       = row$n_subfamilies
       )
       
       adult_counter <- adult_counter + 1

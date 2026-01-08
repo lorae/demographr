@@ -5,6 +5,42 @@
 # 3. Age and immigration status are involved.
 
 
+# ------------------------------------------------------------
+# Step 0: Setup
+# ------------------------------------------------------------
+
+source("R/config.R")
+source("R/generate_households_functions.R")
+source("R/expand_households_functions.R")
+
+N_HH <- 10000   # not too big, otherwise code takes forever
+
+# ------------------------------------------------------------
+# Step 1: Generate 2000-style population (younger age distribution)
+# ------------------------------------------------------------
+
+
+set.seed(SEED)
+
+hh_2000 <- generate_households(
+  n_households = N_HH,
+  mean_hoh_age = 30   # younger baseline
+)
+
+person_2000 <- expand_households_to_adults(hh_2000)
+
+# ------------------------------------------------------------
+# Step 2: Generate 2019-style population (older age distribution)
+# ------------------------------------------------------------
+
+set.seed(SEED)
+
+hh_2019 <- generate_households(
+  n_households = N_HH,
+  mean_hoh_age = 50   # older baseline
+)
+
+person_2019 <- expand_households_to_adults(hh_2019)
 
 # ----- Step 4: Apply KOB ---- #
 
@@ -16,6 +52,12 @@ age_2019 <- person_2019$age |> mean()
 
 children_2000 <- person_2000$n_children |> mean()
 children_2019 <- person_2019$n_children |> mean()
+
+spouse_2000 <- person_2000$n_spouses |> mean()
+spouse_2019 <- person_2019$n_spouses |> mean()
+
+nonsf_2000 <- person_2000$n_nonsf |> mean()
+nonsf_2019 <- person_2019$n_nonsf |> mean()
 
 hhsize_2019 - hhsize_2000
 
