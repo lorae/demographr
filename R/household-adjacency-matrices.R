@@ -74,6 +74,11 @@ household_adjacency <- function(hh_tibble, max_age = Inf) {
   mat
 }
 
+#' Count connected components in household adjacency matrix
+#'
+#' @param mat Adjacency matrix
+#' @return igraph components object
+#' @export
 # Count number of connected components in a household adjacency matrix
 count_components <- function(mat) {
   # Convert directed adjacency to undirected

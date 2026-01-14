@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-18.827 -24.972 1520.6 1866.185" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="color-1" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 1, 2, 0)">
+      <stop style="stop-color: rgb(0, 0, 0);"/>
+    </linearGradient>
+    <linearGradient id="color-0" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 1, -98.362872, -2.23552)">
+      <title>green</title>
+      <stop style="stop-color: rgb(0, 109, 8);"/>
+    </linearGradient>
+    <linearGradient id="color-4" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 1, 0, -16)">
+      <title>grey</title>
+      <stop style="stop-color: rgb(136, 136, 136);"/>
+    </linearGradient>
+    <linearGradient id="color-2" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 1, -8, 2)">
+      <title>blue</title>
+      <stop style="stop-color: rgb(63, 47, 250);"/>
+    </linearGradient>
+    <linearGradient id="color-3" bx:pinned="true" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1, 0, 0, 1, 7, 0)">
+      <title>maroon</title>
+      <stop style="stop-color: rgb(165, 0, 0);"/>
+    </linearGradient>
+    <bx:export>
+      <bx:file format="png" path="household-graph-examples.png"/>
+    </bx:export>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, -5)">
+    <title>panel1</title>
+    <g>
+      <title>household1</title>
+      <g transform="matrix(1, 0, 0, 1, -122.000015, 0)">
+        <title>child1</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="287.99" y="270.077">9</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -122.000015, 0)">
+        <title>child2</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="154.676" y="268.244">12</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -122.000015, 0)">
+        <title>parent</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5px; stroke: url(&quot;#color-3&quot;);" cx="239.775" cy="139.608" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="224.706" y="148.155">35</text>
+      </g>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4px; stroke: currentcolor;" d="M 101.289 171.953 L 64.978 225.793"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4px; stroke: currentcolor;" d="M 132.174 174.04 L 160.972 225.793"/>
+      <g>
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(1A)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A 35 yo single parent lives <tspan x="23.766000747680664" dy="1em">​</tspan>with her 9 and 12 yo<tspan x="23.766000747680664" dy="1em">​</tspan>children.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 46, -3)">
+      <title>household2</title>
+      <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+        <title>child1</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="287.99" y="270.077">9</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+        <title>child2</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="154.676" y="268.244">12</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 95.798225, 7.116127)">
+        <title>parent2</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="358.164" cy="140.235" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="343.095" y="148.782">39</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="422.39" y="129.524"> </text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 95.797852, 7.116479)">
+        <title>parent1</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5px; stroke: url(&quot;#color-3&quot;);" cx="234.775" cy="139.608" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="219.706" y="148.155">35</text>
+      </g>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 330.068 183.521 L 330.263 228.754"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 354.424 177.594 L 432.786 237.064"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor; transform-origin: 387.004px 202.528px;" d="M 347.823 232.263 L 426.185 172.793" transform="matrix(-1, 0, 0, -1, -0.000007, -0.000007)"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 454.278 184.957 L 454.473 230.19"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 369.353 148.922 L 412.745 149.706"/>
+      <g transform="matrix(1, 0, 0, 1, 254.080002, 3.305)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(1B)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A couple in their 30s lives<tspan x="23.766000747680664" dy="1em">​</tspan>with their two children, ages<tspan x="23.766000747680664" dy="1em">​</tspan>9 and 12.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 606.305237, -233.14035)">
+      <title>household3</title>
+      <g transform="matrix(1, 0, 0, 1, 66.584, 236.755005)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(1C)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A 35 yo parent with two children shares<tspan x="23.766000747680664" dy="1em">​</tspan>the household with a partner who is not<tspan x="23.766000747680664" dy="1em">​</tspan>the children's parent.</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -42.404449, 239.699554)">
+        <title>child1</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="287.99" y="270.077">9</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -42.404449, 239.699554)">
+        <title>child2</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="154.676" y="268.244">12</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -105.918518, 239.699203)">
+        <title>parent2</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="358.164" cy="140.235" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="343.095" y="148.782">39</text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="422.39" y="129.524"> </text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -105.918884, 239.699554)">
+        <title>parent1</title>
+        <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5px; stroke: url(&quot;#color-3&quot;);" cx="234.775" cy="139.608" rx="30" ry="30"/>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="219.706" y="148.155">35</text>
+      </g>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 128.351 416.104 L 128.546 461.337"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 152.707 410.177 L 231.069 469.647"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 167.636 381.505 L 211.028 382.289"/>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 14)">
+    <title>panel2</title>
+    <g transform="matrix(1, 0, 0, 1, -46.299694, 56.063202)">
+      <title>household4</title>
+      <g transform="matrix(1, 0, 0, 1, -0.952162, 76.172981)">
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, -122, 0)">
+          <title>partner1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">50</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -91.133537, 1.543323)">
+          <title>partner2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="286.553" y="415.878">57</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 127.045 409.129 L 170.435 409.913"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 48.353008, 295.091064)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(2A)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A couple in their 50s.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 286.995728, 59.700939)">
+      <title>household5</title>
+      <g transform="matrix(1, 0, 0, 1, -7.617299, 75.220825)">
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, -122, 0)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">50</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -91.133537, 1.543323)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="286.553" y="415.878">57</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 127.045 409.129 L 170.435 409.913"/>
+        <g transform="matrix(1, 0, 0, 1, -163.135208, 109.883461)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">24</text>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="367.213" y="391.126"> </text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 95.186 446.6 L 118.513 481.338"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 190.099 445.058 L 160.181 481.339"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 5.168416, 285.649109)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(2B)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A couple in their 50s with an adult <tspan x="23.766000747680664" dy="1em">​</tspan>child. Because the child is above the<tspan x="23.766000747680664" dy="1em">​</tspan>specified age limit, they count as<tspan x="23.766000747680664" dy="1em">​</tspan>their own subfamily, and we denote <tspan x="23.766000747680664" dy="1em">​</tspan>the connection with parents using<tspan x="23.766000747680664" dy="1em">​</tspan>a loose tie.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 411.919891, 404.202789)">
+      <title>household6</title>
+      <g transform="matrix(1, 0, 0, 1, 251.226501, -53.387901)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(2C)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A couple in their 50s with a 15 year <tspan x="23.766000747680664" dy="1em">​</tspan>old child, who counts in the same <tspan x="23.766000747680664" dy="1em">​</tspan>subfamily unit, and a 24 year old child, <tspan x="23.766000747680664" dy="1em">​</tspan>who counts as their own subfamily unit. </text>
+      </g>
+      <g>
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="279.99" y="270.077">24</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+          <title>child2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="154.676" y="268.244">15</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 95.798225, 7.116127)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="358.164" cy="140.235" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="343.095" y="148.782">57</text>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="422.39" y="129.524"> </text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 95.797852, 7.116479)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5px; stroke: url(&quot;#color-3&quot;);" cx="234.775" cy="139.608" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="219.706" y="148.155">50</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 330.068 183.521 L 330.263 228.754"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 354.424 177.594 L 432.786 237.064"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor; transform-origin: 387.004px 202.528px;" d="M 347.823 232.263 L 426.185 172.793" transform="matrix(-1, 0, 0, -1, 0.000115, -0.000022)"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 454.278 184.957 L 454.473 230.19"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 369.353 148.922 L 412.745 149.706"/>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 802.406433, 414.230713)">
+      <title>household7</title>
+      <g transform="matrix(1, 0, 0, 1, 270.242004, -62.555)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(2D)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A couple in their 50s with 15 and 24 year old<tspan x="23.766000747680664" dy="1em">​</tspan>children. The 24 year old's partner and newborn<tspan x="23.766000747680664" dy="1em">​</tspan>child are also present in the household. </text>
+      </g>
+      <g>
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="279.99" y="270.077">24</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 159.312286, 7.116479)">
+          <title>child2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="154.676" y="268.244">15</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 95.798225, 7.116127)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="358.164" cy="140.235" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="343.095" y="148.782">57</text>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="422.39" y="129.524"> </text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 95.797852, 7.116479)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5px; stroke: url(&quot;#color-3&quot;);" cx="234.775" cy="139.608" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="219.706" y="148.155">50</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 330.068 183.521 L 330.263 228.754"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 354.424 177.594 L 432.786 237.064"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor; transform-origin: 387.004px 202.528px;" d="M 347.823 232.263 L 426.185 172.793" transform="matrix(-1, 0, 0, -1, 0.000039, -0.00002)"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 454.278 184.957 L 454.473 230.19"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 369.353 148.922 L 412.745 149.706"/>
+        <g transform="matrix(1, 0, 0, 1, 286.169373, 6.123013)">
+          <title>inlaw1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="295.283" cy="260.851" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="279.99" y="270.077">26</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 495.518 269.362 L 538.91 270.146"/>
+        <g transform="matrix(1, 0, 0, 1, 343.397003, 109.171997)">
+          <title>grandchild1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="172.37" cy="259.182" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="164.676" y="268.244">0</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 469.534 304.153 L 493.65 332.41"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 564.834 303.381 L 539.564 331.638"/>
+      </g>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 14.282434, 157.389206)">
+    <title>panel3</title>
+    <g transform="matrix(1, 0, 0, 1, -48.432415, 455.901764)">
+      <title>household8</title>
+      <g>
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, -75, 0)">
+          <title>roommate1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">22</text>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 34.001415, 253.409058)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(3A)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">A 22 yo who lives alone.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 277.191437, 459.980255)">
+      <title>household9</title>
+      <g transform="matrix(1, 0, 0, 1, 6.775, 248.570007)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(3B)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">Two roommates in their 20s. Since<tspan x="23.766000747680664" dy="1em">​</tspan>they are not in relationships with each<tspan x="23.766000747680664" dy="1em">​</tspan>other, they are counted as separate<tspan x="23.766000747680664" dy="1em">​</tspan>subfamilies.</text>
+      </g>
+      <g>
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, -114, 0)">
+          <title>roommmate1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">22</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, -112.134003, 1.543)">
+          <title>roommate2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">23</text>
+        </g>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -7, 72)">
+      <title>household10</title>
+      <g>
+        <title>network</title>
+        <g transform="matrix(1, 0, 0, 1, 493.571014, 395.69101)">
+          <title>roommmate1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">22</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 495.437012, 396.234009)">
+          <title>roommate2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">23</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 586.468018, 395.549988)">
+          <title>roommate2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-0&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-0&quot;); white-space: pre;" x="286.553" y="415.878">26</text>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 643.482971, 636.737)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(3C)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">Three roommates in their 20s, forming<tspan x="23.766000747680664" dy="1em">​</tspan>three separate subfamily units.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 396.283936, 76.589684)">
+      <title>household11</title>
+      <g transform="matrix(1, 0, 0, 1, 627.655029, 641.577026)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(3D)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">Three roommates in their 20s. One of them<tspan x="23.766000747680664" dy="1em">​</tspan>is also parent to a 2 yo child.</text>
+      </g>
+      <g>
+        <title>network</title>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 889.355 843.94 L 889.55 889.18"/>
+        <g transform="matrix(1, 0, 0, 1, 493.571014, 395.69101)">
+          <title>roommmate1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="209.794" cy="408.103" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="194.725" y="416.65">22</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 495.437012, 396.234009)">
+          <title>roommate2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">23</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 586.468018, 395.549988)">
+          <title>roommate2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-0&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-0&quot;); white-space: pre;" x="286.553" y="415.878">26</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 588.010986, 521.968994)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-0&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-0&quot;); white-space: pre;" x="293.553" y="415.878">2</text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 35.281998, 157.389008)">
+    <title>panel4</title>
+    <g transform="matrix(1, 0, 0, 1, -756.288574, 259.698212)">
+      <title>household12</title>
+      <g transform="matrix(1, 0, 0, 1, -68.9226, 162.817154)">
+        <title>network</title>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 852.097 842.776 L 880.235 893.838"/>
+        <g transform="matrix(1, 0, 0, 1, 586.468018, 395.549988)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">57</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 606.640198, 521.968994)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="286.553" y="415.878">20</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 740.796326, 393.276947)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">60</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 969.853 837.997 L 933.954 891.387"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 886.022 800.739 L 947.926 800.57"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 718.517517, 778.154602)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -4)">(4A)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -4)">Two parents and their 20yo<tspan x="23.766000747680664" dy="1em">​</tspan>child. The child's age is still below <tspan x="23.766000747680664" dy="1em">​</tspan>the filial age cutoff (age 23) so<tspan x="23.766000747680664" dy="1em">​</tspan>this counts as one subfamily.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 139.397079, -110.261269)">
+      <title>household13</title>
+      <g transform="matrix(1, 0, 0, 1, -642.935608, 535.401672)">
+        <title>network</title>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 852.097 842.776 L 880.235 893.838"/>
+        <g transform="matrix(1, 0, 0, 1, 586.468018, 395.549988)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">57</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 606.640198, 521.968994)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">20</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 740.796326, 393.276947)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">60</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 969.853 837.997 L 933.954 891.387"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 886.022 800.739 L 947.926 800.57"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 908.338 971.009 L 908.528 1016.25"/>
+        <g transform="matrix(1, 0, 0, 1, 606.643005, 652.669006)">
+          <title>grandchild1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="293.553" y="415.878">1</text>
+        </g>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 150.371, 1179.4)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -35)">(4B)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -37)">Two parents and their 20yo<tspan x="23.766000747680664" dy="1em">​</tspan>child and baby grandchild. The child is <tspan x="23.766000747680664" dy="1em">​</tspan>below the filial age cutoff (23) but she<tspan x="23.766000747680664" dy="1em">​</tspan>have a child of her own, so the filial <tspan x="23.766000747680664" dy="1em">​</tspan>edge between the 20yo and her parents <tspan x="23.766000747680664" dy="1em">​</tspan>is severed.</text>
+      </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 529.445251, 36.293674)">
+      <title>household14</title>
+      <g transform="matrix(1, 0, 0, 1, 111.062988, 1034.737061)">
+        <title>desc</title>
+        <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="20.292" y="31.331" transform="matrix(1, 0, 0, 1, -8, -35)">(4C)<tspan x="20.29199981689453" dy="1em">​</tspan></text>
+        <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 18px; white-space: pre;" x="23.766" y="59.896" transform="matrix(1, 0, 0, 1, -8, -37)">Two parents and their 20yo<tspan x="23.766000747680664" dy="1em">​</tspan>child and 1yo grandchild. The<tspan x="23.766000747680664" dy="1em">​</tspan>60 year-old's elderly parent (age<tspan x="23.766000747680664" dy="1em">​</tspan>82) also lives with the family.</text>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, -642.935608, 535.401672)">
+        <title>network</title>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 852.097 834.776 L 880.235 885.838"/>
+        <g transform="matrix(1, 0, 0, 1, 586.468018, 387.549988)">
+          <title>parent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">57</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 606.640198, 513.968994)">
+          <title>child1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="286.553" y="415.878">20</text>
+        </g>
+        <g transform="matrix(1, 0, 0, 1, 740.796326, 385.276947)">
+          <title>parent2</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-3&quot;);" cx="252.441" cy="406.213" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-3&quot;); white-space: pre;" x="237.372" y="414.76">60</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 969.853 829.997 L 933.954 883.387"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 886.022 792.739 L 947.926 792.57"/>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke: currentcolor;" d="M 909.338 963.009 L 909.528 1008.25"/>
+        <g transform="matrix(1, 0, 0, 1, 607.643005, 644.669006)">
+          <title>grandchild1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-2&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-2&quot;); white-space: pre;" x="293.553" y="415.878">1</text>
+        </g>
+        <path style="fill: rgb(216, 216, 216); stroke-width: 4; stroke-dasharray: 4; stroke: url(&quot;#color-4&quot;);" d="M 992.823 702.353 L 993.013 747.594"/>
+        <g transform="matrix(1, 0, 0, 1, 691.583008, 252.796997)">
+          <title>grandparent1</title>
+          <ellipse style="fill: rgba(216, 216, 216, 0); stroke-width: 5; stroke: url(&quot;#color-0&quot;);" cx="301.622" cy="407.331" rx="30" ry="30"/>
+          <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px; stroke: url(&quot;#color-0&quot;); white-space: pre;" x="285.553" y="417.878">82</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
