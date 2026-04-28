@@ -74,6 +74,28 @@ household_adjacency <- function(hh_tibble, max_age = Inf) {
   mat
 }
 
+#' Count number of children for each person in household
+#'
+#' Uses parent adjacency matrices to count how many children each person has.
+#' For each person, sums their row in both mother and father adjacency matrices.
+#'
+#' @param hh_tibble A tibble with one row per person, containing id, mother_id, 
+#'   father_id, and age columns
+#' @param max_age Maximum age for children to count (default Inf includes all ages)
+#' @return A vector of child counts, one per person in the household
+#' @export
+#'
+#' @examples
+#' # TODO: Add unit test
+count_children <- function(hh_tibble, max_age = Inf) {
+  mom_mat <- parent_adjacency(hh_tibble, "mother_id", max_age)
+  dad_mat <- parent_adjacency(hh_tibble, "father_id", max_age)
+  
+  # Each person's row sum = their child count
+  # (either as mom or dad, so add them)
+  rowSums(mom_mat) + rowSums(dad_mat)
+}
+
 #' Count connected components in household adjacency matrix
 #'
 #' @param mat Adjacency matrix
@@ -90,3 +112,5 @@ count_components <- function(mat) {
   # Number of connected components
   return(igraph::components(g))
 }
+
+
